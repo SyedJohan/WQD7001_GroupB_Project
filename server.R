@@ -155,7 +155,7 @@ server <- function(input, output, session) {
                            "GarageType" = input$GarageType, "PavedDrive" = input$PavedDrive,
                            "CentralAir" = input$CentralAir, "1stFlrSF" = input$`1stFlrSF`)
         wo <- get_est_price(radio_list, house_data_df)
-        HTML(paste("The estimated price of the house is $", wo, sep=""))
+        HTML("<b>",paste("The estimated price of the house is $", wo, sep=""),"</b>")
     })
     output$user_selected <- renderUI({
         bldg_str <- paste("Building Type:", names(bldgChoice)[bldgChoice == input$BldgType])
@@ -183,7 +183,7 @@ server <- function(input, output, session) {
     })
     
     output$plot_title <- renderText({
-        paste("Here are count of values in", input$housingcolumnplot)
+        paste("Here is a plot count of values in", input$housingcolumnplot)
     })
     
     output$scat_title <- renderText({
@@ -195,7 +195,7 @@ server <- function(input, output, session) {
     #Individual Correlation Plot 
     output$corrcheckbox <- renderUI({
         checkboxGroupInput(inputId = "corr_select_var", 
-                           label = "Select variables to Plot Correlation (Section 2)", 
+                           label = "Select variables to Plot Individual Correlation (Section 2)", 
                            choices = names(house_data_dil_num),
                            selected = names(house_data_dil_num))
     })
@@ -285,33 +285,33 @@ server <- function(input, output, session) {
     #Text For Description
     output$tab2p1head <- renderText({
         
-        'View Correlations between All Attributes' 
+        'View Correlations between All Features' 
     })  
     
     output$tab2p1desc <- renderText({
         
-        'This section investigates the correlations between numeric attributes of the Housing Data. It is often useful to understand how each attribute correlate to one another. The graph below highlights the most correlated variables in a data table'
+        'This section investigates the correlations between numeric features of the Housing Data. It is often useful to understand how each attribute correlate to one another. The graph below highlights the most correlated variables in a data table'
     }) 
     
     
     output$tab2p2head <- renderText({
         
-        'View Correlations between Individual Attributes' 
+        'View Correlations between Individual Features' 
     })  
     
     output$tab2p2desc <- renderText({
         
-        'This sections investigates correlations between individual attributes. The side panel provides a list of available attributes, please select the attributes you want to investigate (minimum 2)' 
+        'This sections investigates correlations between individual features. The side panel provides a list of available features, please select the features you want to investigate (minimum 2)' 
     }) 
     
     
     output$tab2p3head <- renderText({
         
-        'Importance of Attributes towards Sale Price ' 
+        'Importance of Features towards Sale Price ' 
     })  
     
     output$tab2p3desc <- renderText({
-        'This section investigates the importance of each variable towards the Sale Price. The graph below shows the Top 15 Attributes that have the highest importance towards the Sale Price. The Attributes are sorted from top to bottom in the order of most important to least important. ' 
+        'This section investigates the importance of each variable towards the Sale Price. The graph below shows the Top 15 Features that have the highest importance towards the Sale Price. The Features are sorted from top to bottom in the order of most important to least important. ' 
     }) 
     
     output$tab2desc <- renderText({

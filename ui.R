@@ -20,7 +20,7 @@ library(psych)
 library(e1071)
 library(randomForest)
 
-ui <- navbarPage('House Prices ',theme = shinytheme("flatly"),
+ui <- navbarPage('House Prices Estimator',theme = shinytheme("flatly"),
                  #Johan Part
                  tabPanel('Price Checker',
                           titlePanel("Price Estimator for Iowa Houses"),
@@ -76,7 +76,7 @@ ui <- navbarPage('House Prices ',theme = shinytheme("flatly"),
                  
                  #Dilraj Part
                  tabPanel('Explore Data',
-                          titlePanel(title = "Insight from data"),
+                          titlePanel(title = "Insights on House Prices"),
                           sidebarLayout(
                               sidebarPanel(
                                   textOutput("tab2desc"),
@@ -119,13 +119,14 @@ ui <- navbarPage('House Prices ',theme = shinytheme("flatly"),
                  tabPanel('Dataset Description',
                           titlePanel(title = "Description of Dataset Features"),
                           helpText("This tab describes the Iowa Housing Dataset that this app uses"),
+                          helpText("Select the variables from the dropdowns that you would like to see be described"),
                           sidebarLayout(
                             sidebarPanel(
                               # Select variables to display ----
                               #select input to describe
-                              selectInput(label = "Describe the variable", "descvar", "Choose a variable to display",""),
+                              selectInput(label = "Summarize the variable", "descvar", "Choose a variable to display",""),
                               #select input for plot
-                              selectInput(label = "Plot the variable", "housingcolumnplot", "Choose a variable to display",""),
+                              selectInput(label = "Plot value count of the variable", "housingcolumnplot", "Choose a variable to display",""),
                               #select column for scatterplot
                               selectInput(label = "Scatterplot of variable x", "housingcolumnscatx", "Choose a variable to display",""),
                               selectInput(label = "Scatterplot of variable y", "housingcolumnscaty", "Choose a variable to display",""),
