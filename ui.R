@@ -19,6 +19,7 @@ library(egg)
 library(psych)
 library(e1071)
 library(randomForest)
+library(RColorBrewer)
 
 ui <- navbarPage('House Prices Estimator',theme = shinytheme("flatly"),
                  #Johan Part

@@ -112,7 +112,8 @@ server <- function(input, output, session) {
         dataset = house_data_dil
         ggplot(dataset, aes(as.factor(dataset[,input$housingcolumnscatx]),  dataset[,input$housingcolumnscaty])) + 
             geom_point() + 
-            labs(y = dataset[,input$housingcolumnscaty], x = input$housingcolumnscatx);
+            #labs(y = dataset[,input$housingcolumnscaty], x = input$housingcolumnscatx);
+            labs(y = input$housingcolumnscaty, x = input$housingcolumnscatx);
         
     })
     
@@ -171,9 +172,10 @@ server <- function(input, output, session) {
                                 labels=c("<100K","100K-150K","150K-200K", "200K-250K", "250K-300K", ">300K"))
         priceBinCount <- as.data.frame(table(housePricesBin))
         pct <- round(priceBinCount$Freq/sum(priceBinCount$Freq)*100)
-        lbls <- paste(priceBinCount$housePricesBin, pct) # add percents to labels
+        lbls <- paste(priceBinCount$housePricesBin, ", ", pct, sep="") # add percents to labels
         lbls <- paste(lbls,"%",sep="") # ad % to labels 
-        pie(pct, labels = lbls)
+        pie(pct, labels = lbls, main="% of House Prices", col = brewer.pal(n=6, name="RdBu"))
+        legend("topleft", legend = lbls, cex=0.8, fill = brewer.pal(n=6, name="RdBu"))
     })
     # End Johan
     
