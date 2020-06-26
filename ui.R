@@ -23,6 +23,7 @@ library(RColorBrewer)
 
 ui <- navbarPage(title=div(img(alt = 'Dream Home', src="https://img.techpowerup.org/200625/toplogo-removebg-preview-1.png", height=30)),
                  theme = shinytheme("flatly"),
+                 windowTitle = ("Dream Homes R Shiny App"),
                  #Tab 1: Intro Page
                  tabPanel('Main', 
                           titlePanel('Dream Homes'),
